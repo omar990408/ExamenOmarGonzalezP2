@@ -2,12 +2,14 @@ package ec.edu.espe.arquitectura.examen_gonzalez.service;
 
 import ec.edu.espe.arquitectura.examen_gonzalez.dto.req.EmpleadosPagoReq;
 import ec.edu.espe.arquitectura.examen_gonzalez.dto.req.PagoRolReq;
+import ec.edu.espe.arquitectura.examen_gonzalez.dto.res.PagoRolRes;
 import ec.edu.espe.arquitectura.examen_gonzalez.model.EmpleadosPago;
 import ec.edu.espe.arquitectura.examen_gonzalez.model.PagoRol;
 import ec.edu.espe.arquitectura.examen_gonzalez.repository.PagoRolRepository;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.time.Month;
 import java.util.Calendar;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,6 +25,11 @@ public class PagoRolService {
     public PagoRol create(PagoRolReq pagoRolReq){
         PagoRol pagoRol = toPagoTol(pagoRolReq);
         return pagoRolRepository.save(pagoRol);
+    }
+
+    public PagoRolRes validar(Month mes, String rucEmpresa){
+        PagoRol pagoRol = pagoRolRepository.findByRucEmpresaAndMes(rucEmpresa,mes.toString());
+        return null;
     }
 
     private PagoRol toPagoTol(PagoRolReq pagoRolReq) {

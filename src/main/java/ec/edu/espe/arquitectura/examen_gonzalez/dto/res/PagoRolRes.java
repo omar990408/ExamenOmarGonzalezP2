@@ -8,7 +8,7 @@ import java.time.Month;
 
 @Data
 @Builder
-public class EmpleadoPagoRes {
+public class PagoRolRes {
     private Month mes;
     private String rucEmpresa;
     private BigDecimal valorTotal;
